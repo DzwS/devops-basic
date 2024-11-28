@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...'
-                // 在这里添加构建步骤，例如编译代码
+                // 在这里添加构建步骤，例如编译代码12
             }
         }
         stage('Test') {
