@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building...111'
+                echo 'Building...develop'
                 // 在这里添加构建步骤，例如编译代码
             }
         }
