@@ -29,4 +29,3 @@ cloud design patterns
 ## cheat sheet
 
 ## projects / playground
-test2
