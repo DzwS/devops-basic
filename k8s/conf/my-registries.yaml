@@ -1,0 +1,5 @@
+mirrors:
+  "my.company.registry:5000":
+    endpoint:
+      - https://docker.m.daocloud.io
+          

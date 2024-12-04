@@ -1,0 +1,16 @@
+apiVersion: k3d.io/v1alpha5
+kind: Simple
+metadata:
+  name: mycluster
+registries:
+  create:
+    name: docker-io # name of the registry container
+    proxy:
+      remoteURL: https://docker.registry.cyou # proxy DockerHub
+    volumes:
+      - /tmp/reg:/var/lib/registry # persist data locally in /tmp/reg
+  config: | # tell K3s to use this registry when pulling from DockerHub
+    mirrors:
+      "docker.io":
+        endpoint:
+          - http://docker.1panel.live

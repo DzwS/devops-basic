@@ -1,0 +1,36 @@
+apiVersion:  apps/v1
+kind: ReplicaSet
+metadata:
+  name: go-demo-2-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      type: api
+      service: go-demo-2
+  template:
+    metadata:
+      labels:
+        type: api
+        service: go-demo-2
+        language: go
+    spec:
+      containers:
+      - name: api
+        image: nginx:1.14.2
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: go-demo-2-api
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    nodePort: 30001
+    protocol: TCP
+  selector:
+    type: api
+    service: go-demo-2
