@@ -1,36 +1,36 @@
-apiVersion:  apps/v1
-kind: ReplicaSet
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: go-demo-2-api
+  name: nginx-deployment
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
-      type: api
-      service: go-demo-2
+      app: nginx
   template:
     metadata:
       labels:
-        type: api
-        service: go-demo-2
-        language: go
+        app: nginx
     spec:
       containers:
-      - name: api
-        image: nginx:1.14.2
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: go-demo-2-api
+  name: nginx-service
+  annotations: NodePort will open 3000+ port
 spec:
   type: NodePort
-  ports:
-  - port: 80
-    nodePort: 30001
-    protocol: TCP
   selector:
-    type: api
-    service: go-demo-2
+    app: nginx
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+    nodePort: 30007

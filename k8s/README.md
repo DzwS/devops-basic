@@ -1,3 +1,5 @@
+# container(roadmap) | container orchestration | setup x | cloud providers | provisioning | config management
+
 ## keyword
 Core concepts | Cluster | Node | Pod | Namespace
 Workload Management | Deployment | ReplicaSet | Job | CronJob
@@ -28,3 +30,8 @@ infra automation | ansible | terraform | pulumi | argoCD | cloudFormation | kust
 security | vault
 monitoring obervability | fluentd | fluentbit | zabbix | prometheus | ELK
 
+
+# start command
+minikube start --docker-env http_proxy=http://192.168.0.104:7890 \
+               --docker-env https_proxy=https://192.168.0.104:7890 \
+               --docker-env no_proxy=localhost,127.0.0.1,10.96.0.0/12,192.168.0.0/16 --force --driver=docker
