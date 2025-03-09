@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Click Counter</title>
+    <script>
+        async function incrementCounter() {
+            const response = await fetch('/increment', { method: 'POST' });
+            const data = await response.json();
+            document.getElementById('counter').innerText = data.count;
+        }
+    </script>
+</head>
+<body>
+    <h1>Click Counter</h1>
+    <button onclick="incrementCounter()">Click me!</button>
+    <p>Count: <span id="counter">0</span></p>
+</body>
+</html>
